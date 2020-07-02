@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="5; url={% url 'App_Shop:home' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Payment Status</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="messages container mt-2">
+        {% if messages %}
+        {% for messages in messages %}
+        <div {% if messages.tags %} class="alert alert-{{messages.tags}}{% endif %}"
+        role="alert">
+          {{messages}}
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+
+  </body>
+</html>
