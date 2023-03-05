@@ -44,10 +44,23 @@ INSTALLED_APPS = [
     'App_Shop',
     'App_Order',
     'App_Payment',
+    'contact',
+
+    # 'django.contrib.sites',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.facebook',
 ]
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# AUTHENTICATION_BACKENDS = (
+#     'allauth.account.auth_backends.AuthenticationBackend',
+#     'django.contrib.auth.backends.ModelBackend',
+# )
+
 
 #custom user model
 AUTH_USER_MODEL ='App_Login.User'
@@ -141,3 +154,37 @@ MEDIA_URL = '/media/'
 
 
 LOGIN_URL = '/account/login/'
+# LOGIN_REDIRECT_URL = "/" 
+#if you succeed in login, you'll be redirected to the main page.
+
+# SOCIALACCOUNT_PROVIDERS = \
+#     {'facebook':
+#        {'METHOD': 'oauth2',
+#         'SCOPE': ['email','public_profile', 'user_friends'],
+#         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+#         'FIELDS': [
+#             'id',
+#             'email',
+#             'name',
+#             'first_name',
+#             'last_name',
+#             'verified',
+#             'locale',
+#             'timezone',
+#             'link',
+#             'gender',
+#             'updated_time'],
+#         'EXCHANGE_TOKEN': True,
+#         'LOCALE_FUNC': lambda request: 'kr_KR',
+#         'VERIFIED_EMAIL': False,
+#         'VERSION': 'v2.4'}}
+
+
+
+# #facebook
+# SOCIAL_AUTH_FACEBOOK_KEY = 'secret!'  # App ID
+# SOCIAL_AUTH_FACEBOOK_SECRET ='secret!' #app key
+
+# #site id
+# # SITE_ID = <your local host site id> # for the dev mode, you need to use localhost's id facebook does not support the name 127.0.0.1:8000#little options for your page's signup.ACCOUNT_EMAIL_REQUIRED=True
+# ACCOUNT_USERNAME_REQURIED=True
