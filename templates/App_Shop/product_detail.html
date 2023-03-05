@@ -1,36 +1,170 @@
 {% extends 'base.html' %}
 {% block body_block %}
-  <div class="container my-5">
-    <div class="card">
-      <div class="row">
-        <aside class="col-sm-5 border-right">
-          <article class="gallery-wrap">
-            <div class="img-big-wrap">
-              <div>
-                <a href="#"> <img src="/media/{{object.mainimage}}"
-                style="width:450px"></a>
+
+<style>
+  .body {
+    background-color: rgb(219, 219, 219);
+  }
+
+  .card {
+    border: none
+  }
+
+  .product {
+    background-color: #eee
+  }
+
+  .brand {
+    font-size: 13px
+  }
+
+  .act-price {
+    color: red;
+    font-weight: 700
+  }
+
+  .dis-price {
+    text-decoration: line-through
+  }
+
+  .about {
+    font-size: 14px
+  }
+
+  .color {
+    margin-bottom: 10px
+  }
+
+  label.radio {
+    cursor: pointer
+  }
+
+  label.radio input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none
+  }
+
+  label.radio span {
+    padding: 2px 9px;
+    border: 2px solid #ff0000;
+    display: inline-block;
+    color: #ff0000;
+    border-radius: 3px;
+    text-transform: uppercase
+  }
+
+  label.radio input:checked+span {
+    border-color: #ff0000;
+    background-color: #ff0000;
+    color: #fff
+  }
+
+  .btn-danger {
+    background-color: #ff0000 !important;
+    border-color: #ff0000 !important
+  }
+
+  .btn-danger:hover {
+    background-color: #da0606 !important;
+    border-color: #da0606 !important
+  }
+
+  .btn-danger:focus {
+    box-shadow: none
+  }
+
+  .cart i {
+    margin-right: 10px
+  }
+</style>
+<div class="container ">
+  <!-- <div class="card">
+    <div class="row">
+      <aside class="col-sm-5 border-right">
+        <article class="gallery-wrap">
+          <div class="img-big-wrap">
+            <div>
+              <a href="#"> <img src="/media/{{object.mainimage}}" style="width:450px;height:350px"></a>
+            </div>
+          </div>
+        </article>
+      </aside>
+      <aside class="col-sm-7">
+        <article class="card-body p-5">
+          <h3 class="title mp-3">{{object.name}}</h3>
+          <p class="price-detail-wrap">
+            <span class="price h3 text-warning">
+              <span class="currency"> BDT &#2547; </span><span class="num">{{object.price}}</span>
+            </span>
+          </p>
+          <dl class="item-property">
+            <dt>Description</dt>
+            <dd>
+              <p>{{object.detail_text|linebreaks}}</p>
+            </dd>
+          </dl>
+          <a href="{% url 'App_Order:add' pk=object.pk %}" class="btn btn-lg btn-outline-primary text-uppercase"> <i
+              class="fas fa-shopping-cart"></i> Add to Cart</a>
+        </article>
+      </aside>
+    </div>
+  </div> -->
+
+  <div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10">
+        <div class="card">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="images p-3">
+                <div class="text-center p-4"> <img id="main-image" src="/media/{{object.mainimage}}" width="250" />
+                </div>
+                <div class="thumbnail text-center"> <img onclick="change_image(this)" src="/media/{{object.mainimage}}"
+                    width="70"> <img onclick="change_image(this)" src="/media/{{object.mainimage}}" width="70"> </div>
               </div>
             </div>
-          </article>
-        </aside>
-        <aside class="col-sm-7">
-          <article class="card-body p-5">
-            <h3 class="title mp-3">{{object.name}}</h3>
-            <p class="price-detail-wrap">
-              <span class="price h3 text-warning">
-                <span class="currency"> BDT &#2547; </span><span class="num">{{object.price}}</span>
-              </span>
-            </p>
-            <dl class="item-property">
-              <dt>Description</dt>
-              <dd>
-                <p>{{object.detail_text|linebreaks}}</p>
-              </dd>
-            </dl>
-            <a href="{% url 'App_Order:add' pk=object.pk %}" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to Cart</a>
-          </article>
-        </aside>
+            <div class="col-md-6">
+              <div class="product p-4">
+                <div class="d-flex justify-content-between align-items-center">
+
+                </div>
+                <div class="mt-4 mb-3">
+                  <h5 class="text-uppercase">{{object.name}}</h5>
+                  <div class="price d-flex flex-row align-items-center"> <span class="act-price">{{object.price}}
+                      tk</span>
+                    <div class="ml-2"> <small class="dis-price">59 tk</small> <span>40% OFF</span> </div>
+                  </div>
+                </div>
+                <p class="about">{{object.detail_text|linebreaks}}</p>
+                <!-- <div class="sizes mt-5">
+                  <h6 class="text-uppercase">Variants</h6> <label class="radio"> <input type="radio" name="size"
+                      value="S" checked> <span>S</span> </label> <label class="radio"> <input type="radio" name="size"
+                      value="M">
+                    <span>M</span> </label> <label class="radio"> <input type="radio" name="size" value="L">
+                    <span>L</span> </label> <label class="radio"> <input type="radio" name="size" value="XL">
+                    <span>XL</span> </label> <label class="radio"> <input type="radio" name="size" value="XXL">
+                    <span>XXL</span> </label>
+                </div> -->
+                <div class="cart mt-4 align-items-center">
+                  <a href="{% url 'App_Order:add' pk=object.pk %}"><button
+                      class="btn btn-danger text-uppercase mr-2 px-4">
+                      Add to Cart
+                    </button></a> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <br />
+  <br />
+  <br />
+  <br />
+
+</div>
 {% endblock %}
