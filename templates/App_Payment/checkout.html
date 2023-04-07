@@ -33,7 +33,10 @@
       </div>
       <br>
       {% if saved_address.is_fully_filled %}
-      <a href="{% url 'App_Payment:payment' %}" class="btn btn-warning btn-lg">Make Payment</a>
+      <!--<a href="{% url 'App_Payment:payment' %}" class="btn btn-warning btn-lg">Make Payment</a>-->
+
+      <button type="submit" class="btn btn-primary float-right">For Order call: 01742-011181 </button>
+
       {% else %}
       <div class="alert alert-info">
         <p>Please fill up all the Information to make Payment</p>

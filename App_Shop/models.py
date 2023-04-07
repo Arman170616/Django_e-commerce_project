@@ -9,7 +9,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
-        
+
     class Meta:
         verbose_name_plural = "Categories"
 
@@ -20,9 +20,9 @@ class Product(models.Model):
     name = models.CharField(max_length=264)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,related_name="category")
     preview_text = models.TextField(max_length=200, verbose_name='Preview Text')
-    detail_text = models.TextField(max_length=1000, verbose_name='Description')
+    detail_text = models.TextField(max_length=3000, verbose_name='Description')
     price =models.FloatField()
-    old_price = models.FloatField(default=0.00)
+    old_price = models.FloatField(default=0.00, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
 

@@ -27,7 +27,7 @@ SECRET_KEY = 'w0rt12xrkn(=d#a)j_laj)#fcu)jhhr0*41%2ivme@ba%u+hm='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -154,7 +154,7 @@ MEDIA_URL = '/media/'
 
 
 LOGIN_URL = '/account/login/'
-# LOGIN_REDIRECT_URL = "/" 
+# LOGIN_REDIRECT_URL = "/"
 #if you succeed in login, you'll be redirected to the main page.
 
 # SOCIALACCOUNT_PROVIDERS = \

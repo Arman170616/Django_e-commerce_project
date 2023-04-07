@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 #for Payment
 import requests
 #from sslcommerz_python.payment import SSLCSession
-from sslcommerz_lib import SSLCOMMERZ 
+ 
 from decimal import Decimal
 import socket
 from django.views.decorators.csrf import csrf_exempt
